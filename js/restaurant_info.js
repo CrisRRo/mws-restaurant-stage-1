@@ -84,7 +84,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   name.innerHTML = restaurant.name;
 
   const address = document.getElementById('restaurant-address');
-  address.innerHTML = restaurant.address;
+  address.innerHTML = '<p class="address">Address</p>' + restaurant.address;
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
@@ -119,6 +119,8 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
 
     hours.appendChild(row);
   }
+  
+  hours.insertAdjacentHTML( 'beforeBegin', '<p class="working-hours">Working hours</p>' );
 }
 
 /**
@@ -150,18 +152,22 @@ createReviewHTML = (review) => {
   const li = document.createElement('li');
   const name = document.createElement('p');
   name.innerHTML = review.name;
+  name.classList.add('user-name');
   li.appendChild(name);
 
   const date = document.createElement('p');
   date.innerHTML = review.date;
+  date.classList.add('review-data');
   li.appendChild(date);
 
   const rating = document.createElement('p');
   rating.innerHTML = `Rating: ${review.rating}`;
+  rating.classList.add('rating');
   li.appendChild(rating);
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
+  comments.classList.add('comment');
   li.appendChild(comments);
 
   return li;
